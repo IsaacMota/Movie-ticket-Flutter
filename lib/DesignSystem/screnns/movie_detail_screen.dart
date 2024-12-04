@@ -7,47 +7,45 @@ class MovieDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Details'),
+        title: const Text('Movie Detail'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.asset(
-                'assets/images/movie_placeholder.png', // Substitua pela imagem correta
-                height: 250,
+            const Text(
+              'Avengers: Endgame',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Cor branca
+              ),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Genre: Action, Sci-Fi',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white70, // Cor branca com opacidade
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              'Avengers: Infinity War',
-              style: Theme.of(context).textTheme.headlineSmall,
+            const Text(
+              'Synopsis:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Cor branca
+              ),
             ),
             const SizedBox(height: 8),
-            Text(
-              'Release Date: April 27, 2018',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Description:',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'The Avengers must stop Thanos, an intergalactic warlord, '
-              'from getting his hands on all the infinity stones. However, '
-              'Thanos is prepared to go to any lengths to carry out his insane plan.',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Implementação futura: navegação ou ações
-              },
-              child: const Text('Book Tickets'),
+            const Text(
+              'After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more to reverse Thanos\' actions and restore balance to the universe.',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.white70, // Cor branca com opacidade
+              ),
             ),
           ],
         ),

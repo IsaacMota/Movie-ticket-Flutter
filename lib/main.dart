@@ -5,6 +5,7 @@ import 'package:fluttermovie/DesignSystem/screnns/movie_detail_screen.dart';
 import 'package:fluttermovie/DesignSystem/screnns/profile_screen.dart';
 import 'package:fluttermovie/DesignSystem/screnns/singup_screen.dart';
 import 'package:fluttermovie/DesignSystem/screnns/ticket_screen.dart';
+import 'package:fluttermovie/movieapp/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -126,6 +127,20 @@ class MainMenu extends StatelessWidget {
                 );
               },
               child: const Text('Profile Screen'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.amber,
+              ),
+            ),
+            const SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
+              child: const Text('APP'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.amber,

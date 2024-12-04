@@ -23,12 +23,29 @@ class MovieCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(imageUrl,
-                height: 180, width: 120, fit: BoxFit.cover),
+            child: Image.network(
+              imageUrl,
+              height: 180,
+              width: 120,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(height: 8),
-          Text(title, style: Theme.of(context).textTheme.titleMedium),
-          Text(genre, style: Theme.of(context).textTheme.bodyLarge),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white, // Texto branco
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            genre,
+            style: const TextStyle(
+              color: Colors.white70, // Texto branco com opacidade
+              fontSize: 14,
+            ),
+          ),
         ],
       ),
     );

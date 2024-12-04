@@ -1,160 +1,94 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermovie/DesignSystem/components/input_field.dart';
+import 'package:fluttermovie/DesignSystem/components/primary_button.dart';
+import 'package:fluttermovie/movieapp/language.dart';
+import 'package:fluttermovie/movieapp/singupp.dart';
 
-void main() {
-  runApp(MBookingApp());
-}
+class Login extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-class MBookingApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
-}
+  Login({Key? key}) : super(key: key);
 
-class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
+      backgroundColor: Colors.black, // Fundo preto
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              // Navega para a tela de escolha de idioma
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ChooseLanguageScreen()),
+              );
+            },
+            icon: const Icon(Icons.language,
+                color: Colors.amber), // Ícone de idioma
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Header: App Name and Language Selector
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // App Name
-                  Text(
-                    'MBooᴋing',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow,
-                    ),
+            // Título
+            Text(
+              'MBooking hello!',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                  // Language Selector
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      // Logic for language selection
-                    },
-                    icon: Icon(
-                      Icons.language,
-                      color: Colors.white,
-                    ),
-                    label: Text(
-                      'English',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.yellow),
-                    ),
-                  ),
-                ],
-              ),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 16),
-            // Main Content
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Movie Poster
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Image.network(
-                      'https://m.media-amazon.com/images/I/71NiG6vfw+L._AC_SL1000_.jpg',
-                      height: 200,
+            const SizedBox(height: 8),
+            // Subtítulo
+            Text(
+              'Login to your account',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 32),
+            // Campo de Email
+            InputField(
+              hintText: 'Email',
+              controller: emailController,
+            ),
+            const SizedBox(height: 16),
+            // Campo de Senha
+            InputField(
+              hintText: 'Password',
+              controller: passwordController,
+              obscureText: true,
+            ),
+            const SizedBox(height: 24),
+            // Botão de Login
+            PrimaryButton(
+              text: 'Sign In',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUp()),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            // Botão para Sign Up
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Don’t have an account? Sign Up',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Colors.amber,
                     ),
-                  ),
-                  SizedBox(height: 24),
-                  // Title and Subtitle
-                  Text(
-                    'MBooking hello!',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Enjoy your favorite movies',
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
-                  ),
-                  SizedBox(height: 20),
-                  // Dots Indicator (Placeholder for Carousel)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      3,
-                      (index) => Container(
-                        margin: EdgeInsets.symmetric(horizontal: 4),
-                        width: index == 1 ? 12 : 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: index == 1 ? Colors.yellow : Colors.grey,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 24),
-                  // Buttons
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.yellow,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: Size(double.infinity, 50),
-                          ),
-                          child: Text(
-                            'Sign in',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.yellow),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: Size(double.infinity, 50),
-                          ),
-                          child: Text(
-                            'Sign up',
-                            style:
-                                TextStyle(color: Colors.yellow, fontSize: 18),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  // Footer Text
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                    child: Text(
-                      'By signing in or signing up, you agree to our Terms of Service and Privacy Policy',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

@@ -3,10 +3,20 @@ import '../components/bottom_nav_bar.dart';
 import '../components/movie_card.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home")),
+      appBar: AppBar(
+        title: const Text(
+          "Home",
+          style: TextStyle(
+            color: Color.fromARGB(
+                255, 0, 0, 0), // Garante que o título seja branco
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomNavBar(
         currentIndex: 0,
         onTap: (index) {},
@@ -19,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisSpacing: 16.0,
             mainAxisSpacing: 16.0,
           ),
-          itemCount: 6, // Number of movies
+          itemCount: 6, // Número de filmes
           itemBuilder: (context, index) {
             return MovieCard(
               imageUrl: "https://via.placeholder.com/150",
@@ -30,6 +40,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
+      backgroundColor: Colors.black, // Fundo preto para toda a tela
     );
   }
 }
